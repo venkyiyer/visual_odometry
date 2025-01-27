@@ -30,14 +30,14 @@ If you find our work useful in your research, please consider citing:
 
 In the challenging world of endoscopic surgeries, where hardware limitations and environmental variations pose significant obstacles, BodySLAM stands out by integrating deep learning models with strong generalization capabilities. Our framework consists of three key modules:
 
-1. **Monocular Pose Estimation Module (MPEM)**
-2. **Monocular Depth Estimation Module (MDEM)**
-3. **3D Reconstruction Module (3DM)**
+1. **Monocular Pose Estimation Module (MPEM)**: Estimates relative camera poses between consecutive frames using our novel CyclePose architecture
+2. **Monocular Depth Estimation Module (MDEM)**: Predicts depth maps from single images using the Zoe model
+3. **3D Reconstruction Module (3DM)**: Combines pose and depth information for 3D scene reconstruction
 
 ## ✨ Features
 
 - **State-of-the-Art Depth Estimation**: Utilizes the Zoe model for accurate monocular depth estimation
-- **Novel Pose Estimation**: Implements CyclePose, an unsupervised method based on CycleGAN architecture
+- **Novel Pose Estimation**: Implements CycleVO, a novel developed unsupervised method for pose estimation
 - **Cross-Setting Performance**: Robust functionality across various endoscopic surgical environments
 
 ## 🛠 Refactoring Status
@@ -45,39 +45,98 @@ In the challenging world of endoscopic surgeries, where hardware limitations and
 We're actively refactoring our codebase to enhance usability and performance. Here's our current progress:
 
 - [x] Monocular Depth Estimation Module (MDEM)
-- [ ] Monocular Pose Estimation Module (MPEM)
+- [x] Monocular Pose Estimation Module (MPEM)
 - [ ] 3D Reconstruction Module (3DM)
 - [ ] Integration and Testing
 
 ## 📘 Examples
 
-We've included several examples to help you get started with BodySLAM, particularly with the Depth Estimation module:
+We've included several examples to help you get started with BodySLAM:
 
+### Depth Estimation Examples
 1. **Basic Depth Estimation**: Demonstrates the fundamental pipeline for estimating depth from a single image.
-   - File: `examples/depth_estimation/basic_depth_estimation.py`
+   ```bash
+   python examples/depth_estimation/basic_depth_estimation.py
+   ```
 
 2. **Depth Map Scaling and Colorization**: Shows how to scale and colorize depth maps for better visualization.
-   - File: `examples/depth_estimation/depth_map_scaling.py`
+   ```bash
+   python examples/depth_estimation/depth_map_scaling.py
+   ```
 
 3. **Batch Processing**: Illustrates how to process multiple images for depth estimation and colorization.
-   - File: `examples/depth_estimation/batch_processing.py`
+   ```bash
+   python examples/depth_estimation/batch_processing.py
+   ```
 
-To run these examples:
-1. Navigate to the `examples/depth_estimation/` directory
-2. Run the desired script, e.g., `python basic_depth_estimation.py`
+### Pose Estimation Examples
+1. **Single Pair Processing**: Estimate relative pose between two consecutive frames.
+   ```bash
+   python examples/pose_estimation/run_cycle_pose.py --mode pair \
+       --model_path path/to/model.pth \
+       --input frame1.jpg \
+       --input2 frame2.jpg \
+       --output pose.txt
+   ```
 
-## 🔜 Coming Soon
+2. **Sequence Processing**: Process an entire sequence of frames.
+   ```bash
+   python examples/pose_estimation/run_cycle_pose.py --mode sequence \
+       --model_path path/to/model.pth \
+       --input path/to/sequence \
+       --output sequence_poses.txt
+   ```
 
-- **Enhanced Documentation**: We're working on detailed installation instructions, usage guidelines, and more examples.
-
+3. **Dataset Processing**: Process multiple sequences in a dataset.
+   ```bash
+   python examples/pose_estimation/run_cycle_pose.py --mode dataset \
+       --model_path path/to/model.pth \
+       --input path/to/dataset \
+       --output path/to/results
+   ```
 
 ## 🚀 Installation
 
-(Detailed installation instructions will be provided upon completion of code refactoring.)
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/BodySLAM.git
+   cd BodySLAM
+   ```
 
-## 🔧 Usage
+2. Create and activate a virtual environment:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
 
-(Comprehensive usage guidelines will be added after refactoring and documentation improvements.)
+3. Install in development mode:
+   ```bash
+   pip install -e .
+   ```
+
+## 🔧 Project Structure
+
+```
+BodySLAM/
+├── src/
+│   ├── depth_estimation/
+│   │   └── interface.py
+│   └── pose_estimation/
+│       └── interface.py
+├── examples/
+│   ├── depth_estimation/
+│   │   └── basic_depth_estimation.py
+│   └── pose_estimation/
+│       └── run_cycle_pose.py
+└── tests/
+```
+
+## 🔜 Coming Soon
+
+- **3D Reconstruction Module**: Integration of pose and depth for complete 3D reconstruction
+- **Pre-trained Models**: Ready-to-use models for different surgical settings
+- **Enhanced Documentation**: More detailed tutorials and API documentation
+- **Benchmark Results**: Comprehensive evaluation on various surgical datasets
 
 ## 🤝 Contributing
 
