@@ -1,3 +1,0 @@
-pillow==10.4.0
-timm==0.6.7
-matplotlib
