@@ -131,9 +131,9 @@ We've included several examples to help you get started with BodySLAM:
    source venv/bin/activate  # On Windows: venv\Scripts\activate
    ```
 
-3. Install in development mode:
+3. Install the required modules:
    ```bash
-   pip install -e .
+   pip install -r requirements.txt
    ```
 
 ## 🔧 Project Structure
