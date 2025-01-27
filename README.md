@@ -26,6 +26,28 @@ If you find our work useful in your research, please consider citing:
 }
 ```
 
+If you use the depth estimation module in your research, please also cite:
+
+```bibtex
+@misc{https://doi.org/10.48550/arxiv.2302.12288,
+  doi = {10.48550/ARXIV.2302.12288},
+  
+  url = {https://arxiv.org/abs/2302.12288},
+  
+  author = {Bhat, Shariq Farooq and Birkl, Reiner and Wofk, Diana and Wonka, Peter and Müller, Matthias},
+  
+  keywords = {Computer Vision and Pattern Recognition (cs.CV), FOS: Computer and information sciences, FOS: Computer and information sciences},
+  
+  title = {ZoeDepth: Zero-shot Transfer by Combining Relative and Metric Depth},
+  
+  publisher = {arXiv},
+  
+  year = {2023},
+  
+  copyright = {arXiv.org perpetual, non-exclusive license}
+}
+```
+
 ## 🚀 Overview
 
 In the challenging world of endoscopic surgeries, where hardware limitations and environmental variations pose significant obstacles, BodySLAM stands out by integrating deep learning models with strong generalization capabilities. Our framework consists of three key modules:
@@ -133,10 +155,20 @@ BodySLAM/
 
 ## 🔜 Coming Soon
 
-- **3D Reconstruction Module**: Integration of pose and depth for complete 3D reconstruction
-- **Pre-trained Models**: Ready-to-use models for different surgical settings
+- **3D Reconstruction Module**: Integration of pose and depth for complete 3D reconstruction (28/01/2025)
+- **Pre-trained Models**: Ready-to-use models for different surgical settings (29/01/2025)
 - **Enhanced Documentation**: More detailed tutorials and API documentation
-- **Benchmark Results**: Comprehensive evaluation on various surgical datasets
+
+## ❓ FAQ
+
+**Q: Will the training dataset for CycleVO be released?**
+A: No, the training dataset for CycleVO will not be released to the public. However, we will release the pre-trained model weights.
+
+**Q: Where can I find the Hamlyn Dataset?**
+A: The Hamlyn Dataset can be accessed [here](https://unizares-my.sharepoint.com/personal/recasens_unizar_es/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Frecasens%5Funizar%5Fes%2FDocuments%2FDoctorado%2FEndo%2DDepth%2Dand%2DMotion%2FOpen%20access%20files%2Fhamlyn%5Fdata&ga=1).
+
+**Q: Where can I find the EndoSLAM Dataset?**
+A: The EndoSLAM Dataset can be accessed [here](https://github.com/CapsuleEndoscope/EndoSLAM).
 
 ## 🤝 Contributing
 
