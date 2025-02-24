@@ -26,24 +26,17 @@ If you find our work useful in your research, please consider citing:
 }
 ```
 
-If you use the depth estimation module in your research, please also cite:
+If you use our Monocular Depth Estimation Module (MDEM) which is based on ZoeDepth, please also cite:
 
 ```bibtex
 @misc{https://doi.org/10.48550/arxiv.2302.12288,
   doi = {10.48550/ARXIV.2302.12288},
-  
   url = {https://arxiv.org/abs/2302.12288},
-  
   author = {Bhat, Shariq Farooq and Birkl, Reiner and Wofk, Diana and Wonka, Peter and Müller, Matthias},
-  
   keywords = {Computer Vision and Pattern Recognition (cs.CV), FOS: Computer and information sciences, FOS: Computer and information sciences},
-  
   title = {ZoeDepth: Zero-shot Transfer by Combining Relative and Metric Depth},
-  
   publisher = {arXiv},
-  
   year = {2023},
-  
   copyright = {arXiv.org perpetual, non-exclusive license}
 }
 ```
@@ -56,11 +49,19 @@ In the challenging world of endoscopic surgeries, where hardware limitations and
 2. **Monocular Depth Estimation Module (MDEM)**: Predicts depth maps from single images using the Zoe model
 3. **3D Reconstruction Module (3DM)**: Combines pose and depth information for 3D scene reconstruction
 
+## 🏗️ Architecture
+
+![BodySLAM Architecture](/assets/BodySLAM_Architecture.png)
+
 ## ✨ Features
 
 - **State-of-the-Art Depth Estimation**: Utilizes the Zoe model for accurate monocular depth estimation
 - **Novel Pose Estimation**: Implements CycleVO, a novel developed unsupervised method for pose estimation
 - **Cross-Setting Performance**: Robust functionality across various endoscopic surgical environments
+
+## 📥 Pre-trained Models
+
+- **CycleVO Weights**: Our pre-trained CycleVO model is available on Hugging Face: [https://huggingface.co/gvide/CycleVO/](https://huggingface.co/gvide/CycleVO/)
 
 ## 🛠 Refactoring Status
 
@@ -69,7 +70,6 @@ We're actively refactoring our codebase to enhance usability and performance. He
 - [x] Monocular Depth Estimation Module (MDEM)
 - [x] Monocular Pose Estimation Module (MPEM)
 - [ ] 3D Reconstruction Module (3DM)
-- [ ] Integration and Testing
 
 ## 📘 Examples
 
@@ -131,9 +131,9 @@ We've included several examples to help you get started with BodySLAM:
    source venv/bin/activate  # On Windows: venv\Scripts\activate
    ```
 
-3. Install the required modules:
+3. Install in development mode:
    ```bash
-   pip install -r requirements.txt
+   pip install -e .
    ```
 
 ## 🔧 Project Structure
@@ -155,20 +155,8 @@ BodySLAM/
 
 ## 🔜 Coming Soon
 
-- **3D Reconstruction Module**: Integration of pose and depth for complete 3D reconstruction (28/01/2025)
-- **Pre-trained Models**: Ready-to-use models for different surgical settings (29/01/2025)
+- **3D Reconstruction Module**: Refactoring of the 3D reconstruction module
 - **Enhanced Documentation**: More detailed tutorials and API documentation
-
-## ❓ FAQ
-
-**Q: Will the training dataset for CycleVO be released?**
-A: No, the training dataset for CycleVO will not be released to the public. However, we will release the pre-trained model weights.
-
-**Q: Where can I find the Hamlyn Dataset?**
-A: The Hamlyn Dataset can be accessed [here](https://unizares-my.sharepoint.com/personal/recasens_unizar_es/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Frecasens%5Funizar%5Fes%2FDocuments%2FDoctorado%2FEndo%2DDepth%2Dand%2DMotion%2FOpen%20access%20files%2Fhamlyn%5Fdata&ga=1).
-
-**Q: Where can I find the EndoSLAM Dataset?**
-A: The EndoSLAM Dataset can be accessed [here](https://github.com/CapsuleEndoscope/EndoSLAM).
 
 ## 🤝 Contributing
 
@@ -180,4 +168,4 @@ BodySLAM is released under the [MIT License](LICENSE).
 
 ---
 
-For questions or support, please [open an issue](https://github.com/yourusername/BodySLAM/issues) on our GitHub repository.
+For questions or support, please [open an issue](https://github.com/GuidoManni/BodySLAM/issues) on our GitHub repository.
