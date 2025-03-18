@@ -53,6 +53,10 @@ In the challenging world of endoscopic surgeries, where hardware limitations and
 
 ![BodySLAM Architecture](/assets/BodySLAM_Architecture.png)
 
+## 🎬 Demo
+
+![BodySLAM in Action](/assets/bodyslam.gif)
+
 ## ✨ Features
 
 - **State-of-the-Art Depth Estimation**: Utilizes the Zoe model for accurate monocular depth estimation
