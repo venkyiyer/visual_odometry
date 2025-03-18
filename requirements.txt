@@ -3,3 +3,4 @@ timm==0.6.7
 matplotlib
 opencv-python
 filterpy
+open3d
