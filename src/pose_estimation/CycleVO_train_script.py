@@ -38,9 +38,7 @@ from torch.optim import Adam
 from training_utils.utils import *
 from Dataloader.cyclevodataloader import *
 from training_utils import TrainingLoss, LearnableScaleConsistencyLoss
-from UTILS.io_utils import ModelIO, TXTIO
 from dataloader import DatasetsIO
-from UTILS.geometry_utils import PoseOperator
 
 
 datasetIO = DatasetsIO()
