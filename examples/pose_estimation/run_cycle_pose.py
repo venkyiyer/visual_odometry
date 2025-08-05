@@ -25,13 +25,14 @@ def process_image_pair(estimator, frame1_path: str, frame2_path: str):
     return relative_pose
 
 
-def process_single_sequence(estimator, sequence_path: str, output_path: str):
+def process_single_sequence(sequence_path: str, output_path: str):
     """Process a single sequence of images."""
     sequence_dir = Path(sequence_path)
     print(f"\nProcessing sequence from: {sequence_dir}")
 
     # Get all images in the sequence
     image_paths = sorted(list(sequence_dir.glob("*.jpg")))
+    # image_paths = sequence_path
     if not image_paths:
         image_paths = sorted(list(sequence_dir.glob("*.png")))
 
@@ -40,7 +41,7 @@ def process_single_sequence(estimator, sequence_path: str, output_path: str):
         return None
 
     print(f"Found {len(image_paths)} images")
-
+    estimator = PoseEstimator("/home/venkys/Downloads/CycleVO.pth")
     # Process the sequence
     start_time = time.time()
     poses = estimator.process_sequence(image_paths, output_path)
@@ -51,7 +52,7 @@ def process_single_sequence(estimator, sequence_path: str, output_path: str):
     print(f"- Average time per frame: {processing_time / len(image_paths):.3f} seconds")
     print(f"- Poses saved to: {output_path}")
 
-    return poses
+    return poses, processing_time
 
 
 def process_dataset(estimator, dataset_path: str, output_dir: str):

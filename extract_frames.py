@@ -1,3 +1,4 @@
+import streamlit as st
 import cv2
 import os
 
@@ -8,6 +9,8 @@ def extract_frames(video_path, output_dir):
     os.makedirs(output_dir, exist_ok=True)
     cap = cv2.VideoCapture(video_path)
     frame_idx = 0
+    saved_paths = []
+    saved_ids = []
 
     while True:
         ret, frame = cap.read()
@@ -15,11 +18,14 @@ def extract_frames(video_path, output_dir):
             break
         frame_path = os.path.join(output_dir, f"frame_{frame_idx:05d}.jpg")
         cv2.imwrite(frame_path, frame)
+        saved_paths.append(frame_path)
+        saved_ids.append(frame_idx)
         frame_idx += 1
 
     cap.release()
     print(f"Extracted {frame_idx} frames to {output_dir}")
-
+    
+    return saved_paths, saved_ids
 
 # extract_frames(video_path="/home/venkys/sanofi_videos/0c35ad30-14c3-4ab9-b60b-b421e568a921.avi", 
 #                output_dir="/home/venkys/sanofi_videos/sanofi_frames")
@@ -46,7 +52,7 @@ def plot_trajectory(poses):
     # plt.show()
     plt.savefig("/home/venkys/sanofi_videos/trajectory.png")
     print("Trajectory plot saved as trajectory.png")
-
+    # st.pyplot(fig)  # Display in Streamlit UI
 # Example usage:
-poses = load_poses('/home/venkys/sanofi_videos/seq_poses.txt')
-plot_trajectory(poses)
+# poses = load_poses('/home/venkys/sanofi_videos/seq_poses.txt')
+# plot_trajectory(poses)
