@@ -53,6 +53,7 @@ class PoseEstimator:
 
     def _setup_transforms(self) -> transforms.Compose:
         """Setup image transformations matching the model's expected input."""
+        print("Reaching setup transforms -->")
         return transforms.Compose([
             transforms.Resize((self.input_shape[1], self.input_shape[2])),
             transforms.ToTensor(),
@@ -62,6 +63,7 @@ class PoseEstimator:
     def _load_and_preprocess_image(self, image_path: str) -> torch.Tensor:
         """Load and preprocess a single image."""
         image = Image.open(image_path).convert('RGB')
+        print("Image path ->", type(image))
         return self.transform(image).unsqueeze(0)
 
     def estimate_relative_pose(self, frame1_path: str, frame2_path: str) -> np.ndarray:
