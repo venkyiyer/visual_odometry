@@ -92,7 +92,7 @@ class PoseEstimator:
 
     def process_sequence(self,
                          image_paths: List[str],
-                         output_path: Optional[str] = None) -> List[np.ndarray]:
+                         output_path: Optional[str] = None, progress_callback=None) -> List[np.ndarray]:
         """
         Process a sequence of images and compute relative poses.
 
@@ -107,6 +107,7 @@ class PoseEstimator:
         current_pose = np.eye(4)
 
         print("Processing image sequence...")
+        total = len(image_paths) - 1
         for i in tqdm(range(len(image_paths) - 1)):
             # Get relative pose between consecutive frames
             relative_pose = self.estimate_relative_pose(
@@ -118,6 +119,8 @@ class PoseEstimator:
             current_pose = current_pose @ relative_pose
             poses.append(current_pose.copy())
 
+            if progress_callback:
+                progress_callback(i + 1, total)
         # Save poses if output path is provided
         if output_path:
             self.save_poses(poses, output_path)

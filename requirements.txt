@@ -4,3 +4,4 @@ matplotlib
 opencv-python
 filterpy
 open3d
+streamlit

@@ -5,7 +5,7 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 
-def extract_frames(video_path, output_dir):
+def extract_frames(video_path, output_dir, progress_callback=None):
     os.makedirs(output_dir, exist_ok=True)
     cap = cv2.VideoCapture(video_path)
     frame_idx = 0
@@ -21,6 +21,9 @@ def extract_frames(video_path, output_dir):
         saved_paths.append(frame_path)
         saved_ids.append(frame_idx)
         frame_idx += 1
+
+        if progress_callback:
+            progress_callback(frame_idx, int(cap.get(cv2.CAP_PROP_FRAME_COUNT)))
 
     cap.release()
     print(f"Extracted {frame_idx} frames to {output_dir}")
@@ -50,9 +53,9 @@ def plot_trajectory(poses):
     ax.set_zlabel('Z')
     plt.title('Visual Odometry Trajectory')
     # plt.show()
-    plt.savefig("/home/venkys/sanofi_videos/trajectory.png")
-    print("Trajectory plot saved as trajectory.png")
-    # st.pyplot(fig)  # Display in Streamlit UI
+    # plt.savefig("/home/venkys/sanofi_videos/trajectory.png")
+    # print("Trajectory plot saved as trajectory.png")
+    st.pyplot(fig)  # Display in Streamlit UI
 # Example usage:
 # poses = load_poses('/home/venkys/sanofi_videos/seq_poses.txt')
 # plot_trajectory(poses)

@@ -25,7 +25,7 @@ def process_image_pair(estimator, frame1_path: str, frame2_path: str):
     return relative_pose
 
 
-def process_single_sequence(sequence_path: str, output_path: str):
+def process_single_sequence(sequence_path: str, output_path: str, progress_callback=None):
     """Process a single sequence of images."""
     sequence_dir = Path(sequence_path)
     print(f"\nProcessing sequence from: {sequence_dir}")
@@ -41,10 +41,10 @@ def process_single_sequence(sequence_path: str, output_path: str):
         return None
 
     print(f"Found {len(image_paths)} images")
-    estimator = PoseEstimator("/home/venkys/Downloads/CycleVO.pth")
+    estimator = PoseEstimator("./CycleVO.pth")
     # Process the sequence
     start_time = time.time()
-    poses = estimator.process_sequence(image_paths, output_path)
+    poses = estimator.process_sequence(image_paths, output_path, progress_callback=progress_callback)
     processing_time = time.time() - start_time
 
     print(f"\nProcessing complete:")

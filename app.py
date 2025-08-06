@@ -1,4 +1,5 @@
 import streamlit as st
+import shutil
 import os
 import tempfile
 import cv2
@@ -17,8 +18,14 @@ if uploaded_file is not None:
 
     st.success("✅ Video uploaded successfully.")
     
-    st.info("⏳ Extracting frames from video...")
-    frames, frame_ids = extract_frames(video_path, output_dir="extracted_frames")
+    # st.info("⏳ Extracting frames from video...")
+    extract_progress = st.progress(0, text="Extracting frames from the video...")
+
+    def extract_progress_callback(current, total):
+        percent = int(current / total * 100) if total else 0
+        extract_progress.progress(percent, text=f"Extracting frames... {percent}%")
+    frames, frame_ids = extract_frames(video_path, output_dir="extracted_frames", progress_callback=extract_progress_callback)
+    extract_progress.empty()
     st.success(f"Extracted {len(frames)} frames.")
 
     with tempfile.TemporaryDirectory() as frames_dir:
@@ -30,13 +37,21 @@ if uploaded_file is not None:
 
     # print("Frame paths:", frame_paths)
 
-    st.info("🔍 Estimating poses...")
-    poses, processing_time = process_single_sequence("extracted_frames","est_poses.txt")
-    st.info(f"Time taken: {processing_time:.2f} seconds")
+    # st.info("🔍 Estimating poses...")
+    progress_bar = st.progress(0, text="Estimating poses...")
+
+    def progress_indicator(progress, total):
+        percent = int(progress / total * 100)
+        progress_bar.progress(percent, text=f"Estimating poses... {percent}%")
+    
+    poses, processing_time = process_single_sequence("extracted_frames","est_poses.txt", progress_callback=progress_indicator)
+    progress_bar.empty()
+    st.info(f"Time taken to estimate poses: {processing_time:.2f} seconds")
 
     st.info("📈 Rendering 3D trajectory...")
     read_poses = load_poses("est_poses.txt")
     plot_trajectory(poses)
 
     
-    # os.remove(video_path)
+    shutil.rmtree("extracted_frames", ignore_errors=True)
+    os.remove("est_poses.txt")

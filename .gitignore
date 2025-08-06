@@ -2,3 +2,4 @@ extracted_frames/
 __pycache__/
 est_poses.txt
 .*pyc
+*.pth
