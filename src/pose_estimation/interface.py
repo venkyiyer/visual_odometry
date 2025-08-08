@@ -23,7 +23,7 @@ class PoseEstimator:
             model_path: Path to the trained weights
             input_shape: Input shape for the model (channels, height, width)
         """
-        self.device = "cuda" if torch.cuda.is_available() else "cpu"
+        self.device = "cpu"
         self.input_shape = input_shape
         self.model = self._load_model(model_path)
         self.transform = self._setup_transforms()
@@ -63,7 +63,7 @@ class PoseEstimator:
     def _load_and_preprocess_image(self, image_path: str) -> torch.Tensor:
         """Load and preprocess a single image."""
         image = Image.open(image_path).convert('RGB')
-        print("Image path ->", type(image))
+        # print("Image path ->", type(image))
         return self.transform(image).unsqueeze(0)
 
     def estimate_relative_pose(self, frame1_path: str, frame2_path: str) -> np.ndarray:
