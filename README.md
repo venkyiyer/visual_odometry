@@ -1,4 +1,32 @@
-# BodySLAM: A Generalized Monocular Visual SLAM Framework for Surgical Applications
+## Forked repo. More details here: https://github.com/GuidoManni/BodySLAM
+
+## Plotting a 3D trajectory from poses
+
+Given a video, this tool will do a pose estimation and plot the 3D trajectory of the camera based on the poses
+
+## 🚀 Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/venkyiyer/visual_odometry.git
+   cd visual_odometry
+   ```
+
+2. Build the docker file:
+   ```bash
+   docker build -t vis_od_tool .
+   ```
+
+3. Run the docker image
+   ```bash
+   docker run -p 8501:8501 vis_od_tool
+   ```
+
+## Screenshots
+
+
+
+<!-- # BodySLAM: A Generalized Monocular Visual SLAM Framework for Surgical Applications
 
 [![arXiv](https://img.shields.io/badge/arXiv-2408.03078-b31b1b.svg)](https://arxiv.org/abs/2408.03078)
 
@@ -172,4 +200,4 @@ BodySLAM is released under the [MIT License](LICENSE).
 
 ---
 
-For questions or support, please [open an issue](https://github.com/GuidoManni/BodySLAM/issues) on our GitHub repository.
+For questions or support, please [open an issue](https://github.com/GuidoManni/BodySLAM/issues) on our GitHub repository. -->
