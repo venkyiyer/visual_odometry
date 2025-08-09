@@ -3,7 +3,7 @@ import shutil
 import os
 import tempfile
 import cv2
-from extract_frames import extract_frames, plot_trajectory, load_poses
+from utils import extract_frames, plot_trajectory, load_poses
 from examples.pose_estimation.run_cycle_pose import process_single_sequence
 
 st.title("3D Visual Odometry")
