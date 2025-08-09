@@ -1,10 +1,10 @@
 import streamlit as st
 import cv2
 import os
-
 import numpy as np
 import matplotlib.pyplot as plt
 
+# Given a video path, extract frames and save them to a directory
 def extract_frames(video_path, output_dir, progress_callback=None):
     try:
         os.makedirs(output_dir, exist_ok=True)
@@ -32,6 +32,7 @@ def extract_frames(video_path, output_dir, progress_callback=None):
 
     return saved_paths, saved_ids
 
+# Load poses from a file
 def load_poses(pose_file):
     poses = []
     try:
@@ -46,15 +47,16 @@ def load_poses(pose_file):
     
     return poses
 
+# Plot the 3D trajectory from poses
 def plot_trajectory(poses):
     try:
         if not poses:
             st.warning("No poses to plot.")
             return
         xyz = np.array([pose[:3, 3] for pose in poses])
-        fig = plt.figure()
+        fig = plt.figure(figsize=(10, 8))
         ax = fig.add_subplot(111, projection='3d')
-        ax.plot(xyz[:, 0], xyz[:, 1], xyz[:, 2], marker='o')
+        ax.plot(xyz[:, 0], xyz[:, 1], xyz[:, 2], marker='.', markersize= 5, linewidth =3)
         ax.set_xlabel('X')
         ax.set_ylabel('Y')
         ax.set_zlabel('Z')
