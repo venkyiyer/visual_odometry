@@ -4,25 +4,27 @@
 
 Given a video, this tool will do a pose estimation and plot the 3D trajectory of the camera based on the poses
 
-## 🚀 Installation via Docker (Preffered method)
+## 🚀 Installation via Docker (Recommended method)
 
 1. Clone the repository:
    ```bash
    git clone https://github.com/venkyiyer/visual_odometry.git
    cd visual_odometry
    ```
-
-2. Build the docker file:
+2. Download the pose estimation pre-trained model from here: https://huggingface.co/gvide/CycleVO/tree/main. 
+   Place it in the root folder (visual_odometry/)
+   
+4. Build the docker file:
    ```bash
    docker build -t vis_od_tool .
    ```
 
-3. Run the docker image
+5. Run the docker image
    ```bash
    docker run -p 8501:8501 vis_od_tool
    ```
 
-4. Open the URL through browser: http://0.0.0.0:8501
+6. Open the URL through browser: http://0.0.0.0:8501
 
 ## 🚀 Local installation
 
@@ -31,19 +33,23 @@ Given a video, this tool will do a pose estimation and plot the 3D trajectory of
    sudo apt install python3-virtualenv
    virtualenv vis_od
    ```
-
 2. Activate virtual environment:
    ```bash
    source vis_od/bin/activate
    ```
-
 3. Execute the script
    ```bash
    git clone https://github.com/venkyiyer/visual_odometry.git
    cd visual_odometry
-   streamlit run app.py 
    ```
-4. Open the URL through browser: http://localhost:8501
+4. Download the pose estimation pre-trained model from here: https://huggingface.co/gvide/CycleVO/tree/main.
+   Place it in the root folder (visual_odometry/)
+
+6. Execute this
+   ```bash
+   streamlit run app.py
+   ```
+7. Open the URL through browser: http://localhost:8501
    
 
 ## 🚀 Working GIF
