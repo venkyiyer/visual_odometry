@@ -4,7 +4,7 @@
 
 Given a video, this tool will do a pose estimation and plot the 3D trajectory of the camera based on the poses
 
-## 🚀 Installation
+## 🚀 Installation via Docker (Preffered method)
 
 1. Clone the repository:
    ```bash
@@ -21,6 +21,30 @@ Given a video, this tool will do a pose estimation and plot the 3D trajectory of
    ```bash
    docker run -p 8501:8501 vis_od_tool
    ```
+
+4. Open the URL through browser: http://0.0.0.0:8501
+
+## 🚀 Local installation
+
+1. Install virtualenv and create a virtual environment:
+   ```bash
+   sudo apt install python3-virtualenv
+   virtualenv vis_od
+   ```
+
+2. Activate virtual environment:
+   ```bash
+   source vis_od/bin/activate
+   ```
+
+3. Execute the script
+   ```bash
+   git clone https://github.com/venkyiyer/visual_odometry.git
+   cd visual_odometry
+   streamlit run app.py 
+   ```
+4. Open the URL through browser: http://localhost:8501
+   
 
 ## 🚀 Working GIF
 ![Alt Text](media/vis_od.gif)
