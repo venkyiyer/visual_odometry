@@ -20,12 +20,12 @@ Given a video, this tool will do a pose estimation and plot the 3D trajectory of
    ```
 4. Build the docker file:
    ```bash
-   docker build -t vis_od_tool .
+   sudo docker build -t vis_od_tool .
    ```
 
 5. Run the docker image
    ```bash
-   docker run -p 8501:8501 vis_od_tool
+   sudo docker run -p 8501:8501 vis_od_tool
    ```
 
 6. Open the URL through browser: http://0.0.0.0:8501
