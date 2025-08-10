@@ -13,7 +13,11 @@ Given a video, this tool will do a pose estimation and plot the 3D trajectory of
    ```
 2. Download the pose estimation pre-trained model from here: https://huggingface.co/gvide/CycleVO/tree/main. 
    Place it in the root folder (visual_odometry/)
-   
+   OR
+   Execute:
+   ```bash
+   wget https://huggingface.co/gvide/CycleVO/resolve/main/CycleVO.pth
+   ```
 4. Build the docker file:
    ```bash
    docker build -t vis_od_tool .
@@ -43,8 +47,11 @@ Given a video, this tool will do a pose estimation and plot the 3D trajectory of
    cd visual_odometry
    ```
 4. Download the pose estimation pre-trained model from here: https://huggingface.co/gvide/CycleVO/tree/main.
-   Place it in the root folder (visual_odometry/)
-
+   Place it in the root folder (visual_odometry/) OR
+   Execute:
+   ```bash
+   wget https://huggingface.co/gvide/CycleVO/resolve/main/CycleVO.pth
+   ```
 6. Execute this
    ```bash
    streamlit run app.py
