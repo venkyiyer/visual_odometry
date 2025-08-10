@@ -1,6 +1,6 @@
-## Forked repo. More details here: https://github.com/GuidoManni/BodySLAM
+##### Forked from: https://github.com/GuidoManni/BodySLAM
 
-## Plotting a 3D trajectory from poses
+## 🚀 Plotting a 3D trajectory from poses
 
 Given a video, this tool will do a pose estimation and plot the 3D trajectory of the camera based on the poses
 
@@ -22,7 +22,8 @@ Given a video, this tool will do a pose estimation and plot the 3D trajectory of
    docker run -p 8501:8501 vis_od_tool
    ```
 
-## Screenshots
+## 🚀 Working GIF
+![Alt Text](media/vis_od.gif)
 
 
 
